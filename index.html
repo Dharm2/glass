@@ -15,6 +15,9 @@
             overflow: hidden;
             width: 100vw;
             height: 100vh;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
             /* display: flex;
             flex-direction: row;
             justify-content: center;
@@ -27,6 +30,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            scroll-behavior: auto;
+
         }
 
         #contain{
@@ -43,7 +48,7 @@
             position: relative;
             text-align: center;
             backdrop-filter: blur(18px);
-	    -webkit-backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
             z-index: 1;
             padding: 5px;
         }
@@ -56,10 +61,10 @@
             border-radius: 100%;
             background: linear-gradient(#f00,#f0f );
             /* clip-path: circle(40% at right 20%); */
-
             position: absolute;
             top: 221px;
-    left: 450px;
+            left: 450px;
+            /* display: none; */
         }
 
         .glass-blue{
@@ -72,6 +77,7 @@
             background: linear-gradient(rgb(9, 195, 212),rgb(35, 5, 167));
             /* transform: rotate(-45deg); */
             transition: 3s;
+            /* display: none; */
             /* animation: rotatecolor 3s ease-in-out;
             animation-iteration-count: infinite; */
         }
@@ -103,7 +109,7 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: bold;
             opacity: .5;
-            /* pointer-events: none; */
+            pointer-events: none;
             position: absolute;
             top: -147px;
             right: 4px;
@@ -114,6 +120,7 @@
         }
 
         #contain p{
+            pointer-events: none;
             color: white;
             font-size: 20px;
             /* text-transform: uppercase; */
@@ -123,6 +130,7 @@
         }
 
         #contain a{
+            display: block;
             color: white;
             font-family: "Montserrat";
             font-weight: bold;
@@ -145,11 +153,47 @@
             line-height: 26px;
         }
 
+        
+        .head h2{
+            color: white;
+            margin-top: -10%;
+            font-family: "Montserrat";
+            font-size: .8em;
+            position: relative;
+            text-align: center;
+            /* margin-left: 47%; */
+            
+            transform: skew(-10deg);
+            display: block;
+            /* left: 780px; */
+            /* left: 190px; */
+        }
+    
+        .head a{
+            text-decoration: none;
+        }
+        
+
+        /* h2{
+            color: white;
+            font-family: "Montserrat";
+            font-weight: bold;
+            font-size: 10px;
+            /* position: absolute;
+            display: block; 
+            
+            position: relative;
+            bottom: -440px;
+            right: 265px;
+        } */
+
+
+
         @media (max-width: 767px){
 
             #contain{
                 backdrop-filter: blur(18px);
-		-webkit-backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
             }
 
             .glass {
@@ -169,11 +213,12 @@
 
         @media (max-width: 375px)
         {
-		
-		.main{
-			top: -50px;
-			position: relative;
-		}	
+
+            .main{
+                position: relative;
+                top: -50px;
+            }
+
             .glass-blue{
                 top: 543px;
                 left: 203px;
@@ -184,11 +229,17 @@
                 left: -254px;
             }
 
+            .head h2{
+                /* left: 135px; */
+                text-align: center;
+            }
+
         }
-    
+
     </style>
 </head>
 <body>
+
 <div class="main">
     
             <div id="contain">
@@ -200,9 +251,10 @@
             </div>
             <div class="glass"></div>
             <div class="glass-blue" id="blue-glass"></div>
-    
+            
+    <!-- <h2>@dharm_bharodiya</h2> -->
 </div>
-
+<div class="head"><a href="https://www.instagram.com/dharm_bharodiya/" target="_blank"><h2>@dharm_bharodiya</h2></a></div>
 <script type="text/javascript" src="vanilla-tilt.js"></script>
 
 <script>
@@ -212,8 +264,11 @@ VanillaTilt.init(document.querySelector("#contain"), {
 		speed: 400,
         glare: false,
         transition: true
+        
 	});
 
+
+   
 
     let glass = document.getElementById("blue-glass");
 
