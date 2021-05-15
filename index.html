@@ -12,6 +12,9 @@
 
         body{
             background-color: #0f0f0f;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
             /* display: flex;
             flex-direction: row;
             justify-content: center;
@@ -39,7 +42,59 @@
             margin: 50px;
             position: relative;
             text-align: center;
+            backdrop-filter: blur(18px);
+            z-index: 1;
+            padding: 5px;
         }
+
+        .glass{
+            /* top: 0;
+            left: 0; */
+            width: 450px;
+            height: 450px;
+            border-radius: 100%;
+            background: linear-gradient(#f00,#f0f );
+            /* clip-path: circle(40% at right 20%); */
+
+            position: absolute;
+            top: 221px;
+    left: 450px;
+        }
+
+        .glass-blue{
+            width: 250px;
+            height: 250px;
+            top:152px;
+            left: 1000px;
+            border-radius: 100%;
+            position: absolute;
+            background: linear-gradient(rgb(9, 195, 212),rgb(35, 5, 167));
+            /* transform: rotate(-45deg); */
+            transition: 3s;
+            /* animation: rotatecolor 3s ease-in-out;
+            animation-iteration-count: infinite; */
+        }
+        /* .glass-blue:hover{
+            animation: rotatecolor 3s ease-in-out;
+            animation-iteration-count: infinite;
+
+        }
+
+        .glass-blue:active
+        {
+            animation: roatatecolor 3s ease-in-out;
+            animation-iteration-count: infinite;
+        }*/
+
+        @keyframes rotatecolor {
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+
+        } 
 
         #contain h1{
             color: #f0f0f0;
@@ -47,10 +102,14 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: bold;
             opacity: .5;
-            pointer-events: none;
+            /* pointer-events: none; */
             position: absolute;
             top: -147px;
             right: 4px;
+        }
+
+        #contain h1:hover{
+            opacity: .8;
         }
 
         #contain p{
@@ -70,12 +129,55 @@
             position: relative;
             top: 430px;
         }
+        
+        #contain a:hover{
+            color: rgb(221, 187, 187);;
+        }
 
         ::selection{
             color: white;
             background-color: tomato;
         }
 
+
+        #contain p{
+            line-height: 26px;
+        }
+
+        @media (max-width: 767px){
+
+            #contain{
+                backdrop-filter: blur(18px);
+            }
+
+            .glass {
+            top: 95px;
+            left: -207px;
+            }
+
+            .glass-blue{
+                /* top: 600px;
+                left: 399px; */
+                top: 654px;
+                left: 334px
+            }
+
+
+        }
+
+        @media (max-width: 375px)
+        {
+            .glass-blue{
+                top: 543px;
+                left: 203px;
+            }
+
+            .glass{
+                top: 73px;
+                left: -254px;
+            }
+
+        }
     
     </style>
 </head>
@@ -85,10 +187,12 @@
             <div id="contain">
                 <h1>01</h1>
 
-                <p>Hey this is Dharm and you are looking at an all new glass card made by me. PS hover over the card to see some MAGIC happening.</p>
+                <p>Hey this is Dharm and you are looking at an all new glass card made by me. <br> PS hover over the card to see some MAGIC happening.</p>
 
-                <a href="#">Read More</a>
+                <a href="#" target="_self">Read More</a>
             </div>
+            <div class="glass"></div>
+            <div class="glass-blue" id="blue-glass"></div>
     
 </div>
 
@@ -99,10 +203,16 @@
 VanillaTilt.init(document.querySelector("#contain"), {
 		max: 25,
 		speed: 400,
-        glare: true,
-        "max-glare": 1,
-        easing:                 "cubic-bezier(.03,.98,.52,.99)"
+        glare: false
+        
 	});
+
+
+    let glass = document.getElementById("blue-glass");
+
+    glass.onclick = () => {
+        glass.style.animation = "rotatecolor 3s ease-in-out"
+    }
 	
 
 </script>
